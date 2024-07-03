@@ -23,11 +23,13 @@ const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
 const __dirname = path.resolve();
 const app = express();
-app.use(express.static(path.join(__dirname, 'client', 'dist')));
+// app.use(express.static(path.join(__dirname, 'client', 'dist')));
+
+app.use(express.static(path.join(__dirname, 'build')));
 
 // Handle frontend routing, return all requests to index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 dotenv.config();
