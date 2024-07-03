@@ -22,6 +22,7 @@ import { users, posts } from "./data/index.js";
 const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
 const __dirname = path.resolve();
+const app = express();
 app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
 // Handle frontend routing, return all requests to index.html
@@ -30,7 +31,7 @@ app.get('*', (req, res) => {
 });
 
 dotenv.config();
-const app = express();
+
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
